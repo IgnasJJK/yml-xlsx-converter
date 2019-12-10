@@ -65,15 +65,25 @@ def convert_yml_to_xlsx(yml):
 
     return wb
 
+def insert_index_value_into_list(index, value, data):
+    if len(data) < index+1:
+        data.extend([''] * (index + 1 - len(data)))
+
+    data[index] = value
+    return data
+
 def insert_path_value_into_dict(path, value, data):
     path_parts = path.split('.')
     key = path_parts[0]
 
-    #print(key, path)
-
     if len(path_parts) == 1:
-        # Last key
-        data[key] = value
+        # Handle list entry:
+        if "[" in key: 
+            list_index = int(key[key.find('[')+1:key.find(']')])
+            key = key[:key.find('[')]
+            data[key] = insert_index_value_into_list(list_index, value, data[key] if key in data else list())
+        else: 
+            data[key] = value
     elif len(path_parts) > 1:
         data[key] = insert_path_value_into_dict(".".join(path_parts[1:]), value, data[key] if key in data else dict())
     else:

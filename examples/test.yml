@@ -10,3 +10,18 @@ events:
         prices:
             apples: 0.59
             pineapples: 1.19
+dates:
+    months_short:
+        - 
+        - Jan
+        - Feb
+        - Mar
+        - Apr
+        - May
+        - Jun
+        - Jul
+        - Aug
+        - Sep
+        - Oct
+        - Nov
+        - Dec
