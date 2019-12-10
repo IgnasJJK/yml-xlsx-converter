@@ -1,0 +1,12 @@
+---
+stock:
+    apples: 10
+    oranges: 6
+    pineapples: 125
+events:
+    pineapple_day:
+        type: 'sale' 
+        title: 'Pineapple day! All things that end in apple 40% off!'
+        prices:
+            apples: 0.59
+            pineapples: 1.19

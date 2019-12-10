@@ -1,0 +1,52 @@
+* Installation
+
+Tested with /Python 3.6.8/
+
+Required packages:
+- openpyxl
+- pyyaml
+
+* Usage
+
+#+BEGIN_SRC sh :exports code
+python3 main.py <input_file> <output_file>
+#+END_SRC
+
+If the input is yml, the output is xlsx in the following format:
+
+| YML Path | String | Translation |
+| en.homepage.header.homepage | Home | Namai |
+
+/YML Path/ (column A) is a collapsed path to the specific string
+in yml.  For example, 'en.homepage.header.homepage'. This is 
+used to convert the xlsx file back into an yml file and must
+not be edited.
+
+/String/ (column B) is the untranslated text.
+
+/Translation/ (column C) is the translated text. When the xlsx 
+file is used as input, this column is used for converting back
+to yml.
+
+*WARNING*: There isn't much error-checking.
+
+* Examples
+
+The following command would generate an Excel file with the paths
+and unstranslated strings in the first (A) and second (B) columns 
+respectively.
+
+The translator would put the translations in the third (C) column.
+
+#+BEGIN_SRC sh :exports code
+python3 main.py en.yml ru.xlsx
+#+END_SRC
+
+You may skip the extension of the output file. The output file is forced to
+have the appropriate file extension.
+
+The input file extension determines the format of the output.
+
+#+BEGIN_SRC sh :exports code
+python3 main.py en.yml ru
+#+END_SRC
